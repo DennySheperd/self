@@ -1,0 +1,8 @@
+/dist
+/logs
+
+# dependencies
+/node_modules
+
+# app specific
+node_modules
