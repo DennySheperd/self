@@ -1,0 +1,39 @@
+{
+  "name": "self",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.10",
+    "nodemon": "^1.18.6",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^3.2.1",
+    "react-redux": "^5.1.0",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "server": "nodemon server/server.js",
+    "test": "react-scripts test",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start\"",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "proxy": "http://localhost:3001/",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
