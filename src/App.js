@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import { connect } from 'react-redux';
+import { sendMessage } from './actions/messages'
 import './App.css';
 
-class App extends Component {
+const mapDispatchToProps = {
+  sendMessage,
+ };
 
+class App extends Component {
 
     constructor(){
 
@@ -12,18 +16,21 @@ class App extends Component {
 
         axios.get('api/hello')
         .then(response => console.log(response.data))
-
     }
 
-
+    test(){
+      console.log(sendMessage('sdssdds'))
+    }
 
   render() {
+
     return (
       <div className="App">
-        
+          <button onClick = { this.sss }>Press</button>
       </div>
     );
   }
 }
 
-export default App;
+
+export default connect(null, mapDispatchToProps)(App);
