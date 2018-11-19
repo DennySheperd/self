@@ -14,19 +14,23 @@ class App extends Component {
 
         super()
 
+        this.state = {
+          title:''
+        }
+
         axios.get('api/hello')
         .then(response => console.log(response.data))
     }
 
-    test(){
-      console.log(sendMessage('sdssdds'))
+    test = () => {
+      console.log(sendMessage(this.state.title))
     }
 
   render() {
-
     return (
       <div className="App">
-          <button onClick = { this.sss }>Press</button>
+          <input type="text" value={this.title}/>
+          <button onClick = { this.test }>Press</button>
       </div>
     );
   }

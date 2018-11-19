@@ -37,6 +37,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "crypto": "^1.0.1",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "morgan": "^1.9.1",
     "redux-thunk": "^2.3.0"
   }
 }

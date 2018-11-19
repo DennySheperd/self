@@ -12,11 +12,20 @@ var mongoose   = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DATABASE);
 
+const isProduction = process.env.NODE_ENV === 'production';
+
+
+
+app.use(require('./routes'));
+
+
 app.get('/api/hello', (req, res) => {
     res.send({ express: 'Hello From Express' });
 });
 
 const User = require('./models/Users');
+require('./config/passport');
+
 app.post('/api/login', (req, res) => {
   
   if (req.body.email &&
