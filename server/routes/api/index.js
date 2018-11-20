@@ -31,8 +31,9 @@ router.post('/register', auth.optional, (req, res, next) => {
   finalUser.setPassword(user.password);
 
   return finalUser.save()
-    .then(() => res.json({ user: finalUser.toAuthJSON() })).catch(e=>{
-      res.status(400).send(e)
+    .then(() => res.json({ user: finalUser.toAuthJSON() }))
+    .catch(e=>{
+      res.status(400).send(e);
     });
 });
 
@@ -41,7 +42,7 @@ router.post('/login', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
   if(!user.email) {
-    return res.status(422).json({
+    return res.status(400).json({
       errors: {
         email: 'is required',
       },
@@ -49,7 +50,7 @@ router.post('/login', auth.optional, (req, res, next) => {
   }
 
   if(!user.password) {
-    return res.status(422).json({
+    return res.status(400).json({
       errors: {
         password: 'is required',
       },

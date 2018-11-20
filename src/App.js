@@ -31,6 +31,7 @@ class App extends Component {
       <div className="App">
           <input type="text" value={this.title}/>
           <button onClick = { this.test }>Press</button>
+          <a href="/login/facebook">Login with Facebook</a>
       </div>
     );
   }
