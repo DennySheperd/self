@@ -15,7 +15,6 @@ mongoose.connect(config.DATABASE);
 const isProduction = process.env.NODE_ENV === 'production';
 
 
-
 app.use(require('./routes'));
 
 
@@ -24,7 +23,7 @@ app.get('/api/hello', (req, res) => {
 });
 
 const User = require('./models/Users');
-require('./config/passport');
+require('../config/passport');
 
 app.post('/api/login', (req, res) => {
   

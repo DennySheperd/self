@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const router = require('express').Router();
 const auth = require('../auth');
-const Users = mongoose.model('Users');
+
+// const Users = mongoose.model('User');
+const Users = require('../../models/Users')
 
 //POST new user route (optional, everyone has access)
-router.post('/', auth.optional, (req, res, next) => {
+router.post('/register', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
   if(!user.email) {
@@ -29,7 +31,9 @@ router.post('/', auth.optional, (req, res, next) => {
   finalUser.setPassword(user.password);
 
   return finalUser.save()
-    .then(() => res.json({ user: finalUser.toAuthJSON() }));
+    .then(() => res.json({ user: finalUser.toAuthJSON() })).catch(e=>{
+      res.status(400).send(e)
+    });
 });
 
 //POST login route (optional, everyone has access)
@@ -64,7 +68,7 @@ router.post('/login', auth.optional, (req, res, next) => {
       return res.json({ user: user.toAuthJSON() });
     }
 
-    return status(400).info;
+    return res.status(400).send({status:false,reason:'invalid auth'});
   })(req, res, next);
 });
 
